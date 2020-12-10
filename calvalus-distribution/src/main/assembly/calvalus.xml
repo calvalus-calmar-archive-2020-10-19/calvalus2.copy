@@ -1,0 +1,38 @@
+<!--
+   This assembly is part of the "client.xml" assembly.
+   It creates a directory with the calvalus modules and some dependencies.
+-->
+
+<assembly
+        xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+    <id>calvalus</id>
+    <formats>
+        <format>dir</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <dependencySets>
+        <dependencySet>
+            <includes>
+                <include>com.bc.calvalus:calvalus-commons</include>
+                <include>com.bc.calvalus:calvalus-inventory</include>
+                <include>com.bc.calvalus:calvalus-processing</include>
+                <include>jfree:jfreechart</include>
+                <include>jfree:jcommon</include>
+            </includes>
+            <scope>runtime</scope>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>com.bc:geo-inventory</include>
+            </includes>
+            <scope>runtime</scope>
+            <useTransitiveDependencies>true</useTransitiveDependencies>
+            <useTransitiveFiltering>true</useTransitiveFiltering>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+    </dependencySets>
+</assembly>

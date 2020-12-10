@@ -1,0 +1,54 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent" >
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style src="style.css" type='com.bc.calvalus.portal.client.CalvalusStyle'/>
+
+    <g:VerticalPanel spacing="5" width="100%">
+
+        <g:VerticalPanel spacing="16">
+            <g:HTMLPanel styleName="{style.panelTitle}" width="62em">
+                <g:InlineLabel styleName="{style.panelTitleText}">Bootstrapping Configuration</g:InlineLabel>
+            </g:HTMLPanel>
+
+            <g:HorizontalPanel spacing="2">
+
+                <g:VerticalPanel spacing="2">
+                    <g:Label>CSV Matchup files:</g:Label>
+                    <g:ListBox ui:field='bootstrapSources' multipleSelect="false" visibleItemCount="8" width="30em"/>
+
+                    <g:HorizontalPanel spacing="2">
+                        <g:Button ui:field='addBootstrapSourceButton' text="Add"/>
+                        <g:Button ui:field='removeBootstrapSourceButton' text="Remove"/>
+                        <g:Button ui:field='removeAllBootstrapSourceButton' text="Remove All"/>
+                    </g:HorizontalPanel>
+                </g:VerticalPanel>
+
+                <g:HorizontalPanel spacing="2" styleName="{style.centeredHorizontalPanel}">
+                    <g:Label>Number of Iterations:</g:Label>
+                    <g:IntegerBox ui:field="numberOfIterations" visibleLength="13"/>
+                </g:HorizontalPanel>
+            </g:HorizontalPanel>
+        </g:VerticalPanel>
+
+        <g:Composite ui:field='l2ConfigForm'/>
+
+        <g:VerticalPanel spacing="16">
+
+            <g:HTMLPanel styleName="{style.panelTitle}" width="62em">
+                <g:InlineLabel styleName="{style.panelTitleText}">Output Parameters</g:InlineLabel>
+            </g:HTMLPanel>
+
+            <g:HorizontalPanel spacing="2" styleName="{style.centeredHorizontalPanel}">
+                <g:Label>Production name:</g:Label>
+                <g:TextBox ui:field="productionName" visibleLength="48"/>
+            </g:HorizontalPanel>
+            <g:HTML wordWrap="true" addStyleNames="{style.explanatoryLabel}" width="60em">
+                Provide a name for the production to identify it later on. If left empty,
+                a name will be generated from the given parameters.
+                <p/>
+            </g:HTML>
+        </g:VerticalPanel>
+
+    </g:VerticalPanel>
+</ui:UiBinder>

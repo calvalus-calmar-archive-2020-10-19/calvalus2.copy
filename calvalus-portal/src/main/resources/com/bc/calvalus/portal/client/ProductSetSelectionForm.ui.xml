@@ -1,0 +1,87 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent" >
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style src="style.css"/>
+
+    <g:HorizontalPanel spacing="16">
+        <g:VerticalPanel spacing="2">
+
+            <g:HTMLPanel styleName="{style.panelTitle}">
+                <g:InlineLabel styleName="{style.panelTitleText}">Input File Set</g:InlineLabel>
+            </g:HTMLPanel>
+
+
+            <g:VerticalPanel spacing="2" styleName="{style.inputFileSetPanel}">
+                <g:CheckBox ui:field="predefinedProductSets" text="Show predefined file sets" checked="true" styleName="{style.checkBox}"/>
+                <g:HorizontalPanel spacing="2">
+                    <g:CheckBox ui:field="userProductionProductSets" text="Show my outputs" checked="false" styleName="{style.checkBox}"/>
+                    <g:CheckBox ui:field="allProductionProductSets" text="and of other users" checked="false" styleName="{style.checkBox}"/>
+                </g:HorizontalPanel>
+
+                <g:HorizontalPanel spacing="0">
+                    <g:ListBox ui:field="productSetListBox" width="30em" visibleItemCount="8" name="inputProductSet"/>
+
+                    <g:VerticalPanel width="1em"/>
+
+                    <g:HTMLPanel width="37em">
+                        <table>
+                            <tr>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryLabel}">Name:</g:Label>
+                                </td>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryValue}" ui:field="productSetName"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryLabel}">Type:</g:Label>
+                                </td>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryValue}" ui:field="productSetType"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryLabel}">Start Date:</g:Label>
+                                </td>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryValue}" ui:field="productSetStartDate"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryLabel}">End Date:</g:Label>
+                                </td>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryValue}" ui:field="productSetEndDate"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryLabel}">Region name:</g:Label>
+                                </td>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryValue}" ui:field="productSetRegionName"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryLabel}">Geo Inventory:</g:Label>
+                                </td>
+                                <td>
+                                    <g:Label addStyleNames="{style.explanatoryValue}" ui:field="productSetGeoInventory"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </g:HTMLPanel>
+                </g:HorizontalPanel>
+                <g:Anchor ui:field="showProductSetSelectionHelp" addStyleNames="{style.anchor}">Show Help</g:Anchor>
+
+            </g:VerticalPanel>
+
+        </g:VerticalPanel>
+    </g:HorizontalPanel>
+
+</ui:UiBinder>

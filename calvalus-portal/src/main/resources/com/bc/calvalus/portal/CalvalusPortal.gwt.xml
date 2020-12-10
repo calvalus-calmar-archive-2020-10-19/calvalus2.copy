@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='calvalus'>
+
+    <!-- Inherit the core Web Toolkit stuff.                        -->
+    <inherits name='com.google.gwt.user.User'/>
+
+    <!-- Inherit the default GWT style sheet.  You can change       -->
+    <!-- the theme of your GWT application by un-commenting         -->
+    <!-- any one of the following lines.                            -->
+    <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
+    <inherits name='com.google.gwt.user.theme.chrome.Chrome'/>
+    <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+    <!--<inherits name='com.google.gwt.maps.GoogleMaps'/>-->
+    <inherits name='com.google.gwt.maps.Maps'/>
+
+    <!-- Other module inherits                                      -->
+    <inherits name='com.bc.calvalus.commons.CalvalusCommons'/>
+
+    <inherits name="com.google.gwt.xml.XML" />
+
+<!--
+    <inherits name="com.google.gwt.logging.Logging"/>
+-->
+
+    <!-- Specify the app entry point class.                         -->
+    <entry-point class='com.bc.calvalus.portal.client.CalvalusPortal'/>
+
+    <!-- Specify the paths for translatable code                    -->
+    <source path='client'/>
+    <source path='shared'/>
+
+    <inherits name="com.google.gwt.logging.Logging" />
+    <set-property name="gwt.logging.logLevel" value="INFO"/>
+    <set-property name="gwt.logging.enabled" value="TRUE"/>
+    <set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
+    <set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED" />
+
+</module>

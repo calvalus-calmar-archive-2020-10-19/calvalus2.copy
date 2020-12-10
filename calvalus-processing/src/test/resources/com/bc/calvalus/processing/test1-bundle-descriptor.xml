@@ -1,0 +1,38 @@
+<bundleDescriptor>
+    <bundleName>bundle-test-name</bundleName>
+    <bundleVersion>1.1-SNAPSHOT</bundleVersion>
+
+    <aggregatorDescriptors>
+        <aggregatorDescriptor>
+            <aggregator>ON_MAX_SET</aggregator>
+            <parameterDescriptors>
+                <parameterDescriptor>
+                    <name>onMaxVarName</name>
+                    <type>variable</type>
+                    <description>If this band reaches its maximum the values of the source bands are taken.</description>
+                </parameterDescriptor>
+                <parameterDescriptor>
+                    <name>targetName</name>
+                    <type>string</type>
+                    <description>The name prefix for the resulting bands. If empty, the source band name is used.</description>
+                </parameterDescriptor>
+                <parameterDescriptor>
+                    <name>setVarNames</name>
+                    <type>variableArray</type>
+                    <description>The source bands used for aggregation when maximum band reaches its maximum.</description>
+                </parameterDescriptor>
+            </parameterDescriptors>
+        </aggregatorDescriptor>
+    </aggregatorDescriptors>
+
+    <processorDescriptors>
+        <processorDescriptor>
+            <executableName>executeMe.bat</executableName>
+            <processorName>Science Test Processor</processorName>
+        </processorDescriptor>
+        <processorDescriptor>
+            <executableName>run.exe</executableName>
+            <processorName>Do Test Processing</processorName>
+        </processorDescriptor>
+    </processorDescriptors>
+</bundleDescriptor>

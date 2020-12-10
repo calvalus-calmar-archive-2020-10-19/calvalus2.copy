@@ -1,0 +1,221 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent" >
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style src="style.css"/>
+
+    <g:HorizontalPanel spacing="16">
+        <g:VerticalPanel spacing="2">
+
+            <g:HTMLPanel styleName="{style.panelTitle}" width="100%">
+                <g:InlineLabel styleName="{style.panelTitleText}">Match-up Analysis Parameters</g:InlineLabel>
+            </g:HTMLPanel>
+
+            <g:HorizontalPanel spacing="2">
+
+                <g:VerticalPanel spacing="2">
+                    <g:Label>In-situ and point data files:</g:Label>
+
+                    <g:ListBox ui:field='recordSources' multipleSelect="false" visibleItemCount="20" width="35em"/>
+                    <g:HorizontalPanel spacing="2">
+                        <g:Button ui:field='addRecordSourceButton' text="Add"/>
+                        <g:Button ui:field='checkRecordSourceButton' text="Check"/>
+                        <g:Button ui:field='viewRecordSourceButton' text="View"/>
+                        <g:Button ui:field='removeRecordSourceButton' text="Remove"/>
+                    </g:HorizontalPanel>
+                </g:VerticalPanel>
+
+                <g:HTMLPanel>
+                    <table cellspacing="2" style="width: 35em">
+                        <tr>
+                            <td>
+                                <g:Label>Macro pixel size:</g:Label>
+                            </td>
+                            <td>
+                                <g:IntegerBox ui:field="macroPixelSize" visibleLength="8"/>
+                            </td>
+                            <td>pixels</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <g:HTML wordWrap="true" addStyleNames="{style.explanatoryLabel}">
+                                    Size of the macro pixel given as number of 'normal' pixels 'n'.
+                                    An area comprising n x n
+                                    pixels will be considered in the match-up process. Should be an odd integer,
+                                    so that n/2 - 1 pixels are considered around a given center pixel.
+                                    The default value size is 5 pixels so that an area of 5 x 5 pixels will be
+                                    considered.
+                                </g:HTML>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <g:Label>Maximum time difference:</g:Label>
+                            </td>
+                            <td>
+                                <g:TextBox ui:field="maxTimeDifference" visibleLength="8"/>
+                            </td>
+                            <td>hours</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <g:HTML wordWrap="true" addStyleNames="{style.explanatoryLabel}">
+                                    The time difference is given in hours.
+                                    Alternatively the difference can be given in full days using the 'd' suffix e.g. 0d,1d,...
+                                    This criterion can be disabled by entering '0' or leaving it empty.
+                                </g:HTML>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <g:Label>Filtered mean coefficient:</g:Label>
+                            </td>
+                            <td>
+                                <g:DoubleBox ui:field='filteredMeanCoeff' visibleLength="8"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <g:HTML wordWrap="true" addStyleNames="{style.explanatoryLabel}">
+                                    Coefficient for <i>filtered mean criterion</i>.
+                                    If the value is less than or equal to 0,
+                                    the criterion will not be used. The default value is 1.5.
+                                </g:HTML>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <g:Label>Filter overlapping Match-ups:</g:Label>
+                            </td>
+                            <td colspan="2">
+                                <g:CheckBox ui:field='filterOverlapping'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <g:HTML wordWrap="true" addStyleNames="{style.explanatoryLabel}">
+                                    If enabled, overlapping match-ups, within one data product, are removed.
+                                    Only the match-up closest in time to the in-situ data is preserved.
+                                </g:HTML>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <g:Label>Only extract complete Macro pixel:</g:Label>
+                            </td>
+                            <td colspan="2">
+                                <g:CheckBox ui:field='onlyExtractComplete'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <g:HTML wordWrap="true" addStyleNames="{style.explanatoryLabel}">
+                                    If enabled, only macro pixels that comprise the complete n x n area are extracted.
+                                </g:HTML>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <g:Label>Grouping column:</g:Label>
+                            </td>
+                            <td colspan="2">
+                                <g:TextBox ui:field='outputGroupName' visibleLength="12"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <g:HTML wordWrap="true" addStyleNames="{style.explanatoryLabel}">
+                                    The grouping column must be a name in the header of the selected in-situ / point
+                                    data file.
+                                    All records that have same values in this column will be grouped together for
+                                    further analysis.
+                                    Note that the column name identification is letter case sensitive.
+                                    <p/>
+                                </g:HTML>
+                            </td>
+                        </tr>
+                    </table>
+                </g:HTMLPanel>
+            </g:HorizontalPanel>
+
+            <g:HTMLPanel ui:field="expressionTable">
+                <table cellspacing="2">
+                    <tr>
+                        <td>
+                            <g:Label>Good-pixel expression:</g:Label>
+                        </td>
+                        <td>
+                            <g:TextBox ui:field="goodPixelExpression" width="36em"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <g:HTML wordWrap="true" addStyleNames="{style.explanatoryLabel}" width="63em">
+                                The good-pixel expression is a SNAP band maths expression (refer to SNAP documentation)
+                                that is evaluated
+                                for each L2 processor output pixel. If it evaluates to the Boolean TRUE value, the pixel
+                                will be used for further analysis.
+                                For SNAP processors, you usually don't need to specify it, because SNAP products usually
+                                already
+                                have valid-masks attached to their geo-physical output variables.
+                                <br/>
+                                For example: conc_chl &lt; 50 AND Kd_490 > 0 AND NOT l2p_flags.OOTR
+                            </g:HTML>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <g:Label>Good-record expression:</g:Label>
+                        </td>
+                        <td>
+                            <g:TextBox ui:field="goodRecordExpression" width="36em"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <g:HTML wordWrap="true" addStyleNames="{style.explanatoryLabel}" width="63em">
+                                The good-record expression also is a SNAP band maths expression
+                                that is evaluated
+                                for each aggregated macro pixel (= record). For each geo-physical output variable
+                                <i>var</i>
+                                the following derived variables are usable in this expression:
+                                <ul>
+                                    <li><i>var</i>.min - minimum value of all good pixels
+                                    </li>
+                                    <li><i>var</i>.max - maximum value of all good pixels
+                                    </li>
+                                    <li><i>var</i>.mean - (filtered) mean value
+                                    </li>
+                                    <li><i>var</i>.sigma - (filtered) mean value
+                                    </li>
+                                    <li><i>var</i>.cv - The coefficient of variance: sigma / mean
+                                    </li>
+                                    <li><i>var</i>.n - Number of good pixels that have been used for the analysis. n =
+                                        nT -
+                                        nF - nNaN,
+                                        where nNaN are the pixels, where has missing values:<i>var</i>=NaN.
+                                    </li>
+                                    <li><i>var</i>.nF - Number of pixels that have been filtered out since they do not
+                                        satisfy the condition
+                                        mean - a * sigma &lt;
+                                        <i>var</i>
+                                        &lt; mean + a *sigma,
+                                        where a is the filtered mean coefficient
+                                    </li>
+
+                                    <li><i>var</i>.nT - Total number of pixels
+                                    </li>
+                                </ul>
+                                For example: median(reflec_1.cv, reflec_2.cv, reflec_3.cv) &lt; 0.15
+                            </g:HTML>
+                        </td>
+                    </tr>
+
+
+                </table>
+            </g:HTMLPanel>
+        </g:VerticalPanel>
+    </g:HorizontalPanel>
+</ui:UiBinder>

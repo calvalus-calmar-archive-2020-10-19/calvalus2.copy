@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# pins a shell to a certain Calvalus instance
+# usage: . mycalvalus
+
+#if [[ $0 == -* ]]; then
+#  INSTANCE_DIR=`pwd`
+#else
+# INSTANCE_DIR=`( cd `dirname $0`; pwd )`
+#fi
+
+INSTANCE_DIR=`pwd`
+export HADOOP_CONF_DIR=$INSTANCE_DIR/conf
+export PATH=$INSTANCE_DIR/bin:$PATH
+
+echo "using hadoop: `which hadoop`"
+echo "using java: `which java`"
+echo "using Calvalus client instance $INSTANCE_DIR"
+
+$*
